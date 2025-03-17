@@ -15,11 +15,23 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Admin registerAdmin(Admin admin) {
-        return repository.save(admin);
-    }
+        if (validateAdminName(admin.getUsername())){
+            return repository.save(admin);
+        }else {
+            throw new RuntimeException("Username cannot be empty");
+        }
 
+    }
+   private boolean validateAdminName(String name) {
+    return name != null && !name.isEmpty();
+}
     @Override
     public List<Admin> getAllAdmins() {
         return repository.findAll();
+    }
+
+    @Override
+    public void deleteAdminById(Long id) {
+        repository.deleteById(id);
     }
 }

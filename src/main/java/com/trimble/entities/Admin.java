@@ -8,11 +8,7 @@ public class Admin {
     private String username;
     private String password;
 
-    public Admin(Long adminId, String username, String password) {
-        this.adminId = adminId;
-        this.username = username;
-        this.password = password;
-    }
+
 
     public Long getAdminId() {
         return adminId;
